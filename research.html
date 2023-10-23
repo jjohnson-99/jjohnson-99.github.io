@@ -2,11 +2,29 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!--
 <script src="swap.js"></script>
 <script type="text/javascript"
 	src="http://latex.codecogs.com/latexit.js"></script>
 <script type="text/javascript">
 LatexIT.add('p',true);
+-->
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [ ['$','$'],['\\(','\\)'] ],
+    displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+    processEscapes: true,      
+    processEnvironments: true, 
+    processRefs: true       
+  },
+  options: {
+   ignoreHtmlClass: 'tex2jax_ignore|editor-rich-text'
+  }
+};
 </script>
 <link rel=stylesheet href="style.css" type="text/css">
 <title>Jeremy Johnson</title>
@@ -24,11 +42,77 @@ LatexIT.add('p',true);
 	  </div>
 	
 	  <div class="papersList">
+       
 
+          
 		<br>
 	 	<div class="bigText"> research </div>
 	  	<br><hr><br>
-		Will write about a few projects I've worked on throughout graduate school.
+
+        <br><br>
+        <div class="mediumText"> overview </div>
+        <br>
+
+        The bulk of my graduate work is loosly on <b>completing partially supplied
+            data sets</b>. This is exceptionally important to fields like biology and
+        medicine where data is costly and difficult to come by, e.g., drug discovery
+        research. This is also important to commerce, e.g., the <a class="bodyLink", 
+            href="https://en.wikipedia.org/wiki/Netflix_Prize", target="_blank"> 
+            Netflix problem</a>. I have worked on developing new algorithms
+        to solve certain instances of this problem. Additionally, I have worked
+        on theory that attempts to understand the mathematical limits of a certain
+        special case.
+
+        <br><br>
+
+        <br><br>
+        <div class="mediumText"> mathematical description </div>
+        <br>
+
+        In mathematics, this problem is refered to as <b> matrix completion</b>.
+        In order to describe this, let us divide the problem into two classes, the first
+        and simplist being <b> low-rank matrix completion</b> (LRMC). In LRMC,
+        there is an $m\times n$ matrix $\mathbf{X}$ of a given rank $r$, however,
+        we are able to view only a subset of entries, denoted by a mask $\Omega$,
+        a matrix of 1's and 0's where 1 denotes the location of an observed 
+        entry and 0 denotes otherwise. This observed matrix is denoted by
+        $X^{\Omega}$. For example, we may be given
+        $$
+        X^{\Omega} = \begin{bmatrix}
+            1 & 2 & \ast\\
+            \ast & 6 & 3\\
+            \end{bmatrix},
+            \qquad \text{where} \qquad
+           \Omega =  \begin{bmatrix}
+            1 & 1 & 0\\
+            0 & 1 & 1\\
+            \end{bmatrix}.
+        $$
+        The question now is, what should the missing values of $X$ be? The
+        answer to this depends on the value of the assumed rank $r$, i.e., if
+        the rank is assumed to be 2, the missing entries can be any value. If
+        we assume, however, that the rank should be 1, then it is possible to
+        show that $X$ must be precisely
+        $$
+        X = \begin{bmatrix}
+        1 & 2 & 1\\
+        3 & 6 & 3\\
+        \end{bmatrix}.
+        $$
+        This is prehaps not surprising since the number of equations that must
+        be satisfied by $X$ is small and easy to solve by hand. If the values of
+        $m$, $n$, and $r$ are large, and the percent of missing data moderate 
+        to large, the problem is infeasible to solve by hand and algorithms
+        must be developed to find or approximate the answer. There already
+        exist many algorithms to do this. My research on LRMC was rather focused
+        on which patterns $\Omega$ lead to partially observed data $X^{\Omega}$
+        with a finite number of solutions, as in the example above. This question
+        is linked to the very difficult problem in algebraic combinatorics of
+        characterizing the bases of the algebraic matroid of determinental varities.
+        Many attempts at solving this problem have been made.
+        <br><br>
+
+        Write <b>high-rank matrix completion</b> section.
 	  </div>
 	
 	</div>
